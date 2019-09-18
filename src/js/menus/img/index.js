@@ -126,6 +126,7 @@ Image.prototype = {
         const editor = this.editor
         const uploadImg = editor.uploadImg
         const config = editor.config
+        // editor.config.uploadImgServer = 'http://testfdp-serv.yunxiao.com/fdp_api/upload/images';
 
         // id
         const upTriggerId = getRandom('up-trigger')
@@ -143,6 +144,10 @@ Image.prototype = {
                     </div>
                     <div style="display:none;">
                         <input id="${upFileId}" type="file" multiple="multiple" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp"/>
+                    </div>
+                    <div class="w-e-button-container">
+                        <button id="insertBtn" class="right">插入图片</button>
+                        <button class="right gray">取消</button>
                     </div>
                 </div>`,
                 events: [
@@ -215,10 +220,12 @@ Image.prototype = {
 
         // 判断 tabs 的显示
         const tabsConfigResult = []
+        console.log(config);
         if ((config.uploadImgShowBase64 || config.uploadImgServer || config.customUploadImg) && window.FileReader) {
             // 显示“上传图片”
             tabsConfigResult.push(tabsConfig[0])
         }
+
         if (config.showLinkImg) {
             // 显示“网络图片”
             tabsConfigResult.push(tabsConfig[1])
