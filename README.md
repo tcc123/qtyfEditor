@@ -29,7 +29,7 @@ editor.create()
 
 ## 运行 demo
 
-- 下载源码 `git clone git@github.com:huoalong/qtyfEditor.git`
+- 下载源码 `git clone git@git.iyunxiao.com:huoalong/qtyfEditor.git`
 - 安装或者升级最新版本 node（最低`v6.x.x`）
 - 进入目录，安装依赖包 `cd qtyfEditor && npm i`
 - 安装包完成之后，windows 用户运行`npm run win-example`，Mac 用户运行`npm run example`
