@@ -1,60 +1,75 @@
 {
-  "name": "qtyfEditor",
-  "title": "qtyfEditor",
-  "version": "3.1.1",
-  "description": "qtyfEditor - 基于wangeditor、javascript和css二次开发的 web 富文本编辑器， 轻量、简洁、易用、开源免费",
-  "homepage": "http://wangeditor.github.io/",
-  "author": {
-    "name": "huoalong",
-    "url": "https://github.com/huoalong"
+  "_from": "wangeditor@2.1.23",
+  "_id": "wangeditor@2.1.23",
+  "_inBundle": false,
+  "_integrity": "sha1-WbptIkyyFuvJ1AzpJzJpDZmH+3o=",
+  "_location": "/wangeditor",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "wangeditor@2.1.23",
+    "name": "wangeditor",
+    "escapedName": "wangeditor",
+    "rawSpec": "2.1.23",
+    "saveSpec": null,
+    "fetchSpec": "2.1.23"
   },
-  "keywords": [
-    "qtyfEditor",
-    "web 富文本编辑器"
+  "_requiredBy": [
+    "#USER",
+    "/"
   ],
-  "main": "release/qtyfEditor.js",
+  "_resolved": "http://registry.npm.taobao.org/wangeditor/download/wangeditor-2.1.23.tgz",
+  "_shasum": "59ba6d224cb216ebc9d40ce92732690d9987fb7a",
+  "_spec": "wangeditor@2.1.23",
+  "_where": "/Users/huoalong/project/fdp_web",
+  "author": {
+    "name": "wangfupeng1988",
+    "url": "https://github.com/wangfupeng1988"
+  },
+  "bugs": {
+    "url": "https://github.com/wangfupeng1988/wangEditor/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "jquery": "^2.2.3"
+  },
+  "deprecated": false,
+  "description": "wangEditor - 基于javascript和css开发的 Web富文本编辑器， 轻量、简洁、易用、开源免费",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1"
+  },
+  "homepage": "http://wangeditor.github.io/",
+  "keywords": [
+    "wangEditor",
+    "富文本编辑器"
+  ],
+  "main": "dist/js/wangEditor.js",
   "maintainers": [
     {
-      "name": "huoalong",
-      "web": "http://www.cnblogs.com/huoalong/default.html?OnlyTitle=1",
-      "mail": "huoalong009@163.com"
+      "name": "wangfupeng1988",
+      "email": "wangfupeng1988@163.com",
+      "url": "http://www.cnblogs.com/wangfupeng1988/default.html?OnlyTitle=1"
     }
   ],
+  "name": "wangeditor",
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/huoalong/qtyfEditor"
+      "url": "git+https://github.com/wangfupeng1988/wangEditor.git"
     }
   ],
-  "scripts": {
-    "release": "gulp",
-    "win-example": "node ./example/server/index.js",
-    "example": "/bin/rm -rf ./example/upload-files && mkdir ./example/upload-files && npm run win-example"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangfupeng1988/wangEditor.git"
   },
-  "devDependencies": {
-    "autoprefixer": "^6.7.7",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-latest": "^6.24.0",
-    "cssgrace": "^3.0.0",
-    "formidable": "^1.1.1",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssmin": "^0.1.7",
-    "gulp-less": "^3.3.0",
-    "gulp-postcss": "^6.4.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-sourcemaps": "^2.5.0",
-    "gulp-uglify": "^2.1.2",
-    "koa": "^1.2.4",
-    "koa-bodyparser": "^2.3.0",
-    "koa-onerror": "^3.1.0",
-    "koa-router": "^5.4.0",
-    "koa-static-cache": "^4.0.0",
-    "rollup": "^0.41.6",
-    "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-eslint": "^3.0.0",
-    "rollup-plugin-node-resolve": "^3.0.0"
-  },
-  "dependencies": {}
+  "title": "wangEditor",
+  "version": "2.1.23"
 }
