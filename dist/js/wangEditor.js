@@ -2,7 +2,7 @@
     if (typeof window.define === 'function') {
         if (window.define.amd) {
             // AMD模式
-            window.define('wangEditor', ["jquery"], factory);
+            window.define('qtyfEditor', ["jquery"], factory);
         } else if (window.define.cmd) {
             // CMD模式
             window.define(function (require, exports, module) {
@@ -16,7 +16,7 @@
         // commonjs
 
         // 引用 css —— webapck
-        require('../css/wangEditor.css');
+        require('../css/qtyfEditor.css');
         module.exports = factory(
             // 传入 jquery ，支持使用 npm 方式或者自己定义jquery的路径
             require('jquery')
@@ -29,13 +29,13 @@
     
     // 验证是否引用jquery
     if (!$ || !$.fn || !$.fn.jquery) {
-        alert('在引用wangEditor.js之前，先引用jQuery，否则无法使用 wangEditor');
+        alert('在引用qtyfEditor.js之前，先引用jQuery，否则无法使用 qtyfEditor');
         return;
     }
 
     // 定义扩展函数
     var _e = function (fn) {
-        var E = window.wangEditor;
+        var E = window.qtyfEditor;
         if (E) {
             // 执行传入的函数
             fn(E, $);
@@ -43,9 +43,9 @@
     };
 // 定义构造函数
 (function (window, $) {
-    if (window.wangEditor) {
+    if (window.qtyfEditor) {
         // 重复引用
-        alert('一个页面不能重复引用 wangEditor.js 或 wangEditor.min.js ！！！');
+        alert('一个页面不能重复引用 qtyfEditor.js 或 qtyfEditor.min.js ！！！');
         return;
     }
 
@@ -86,15 +86,15 @@
     E.getComputedStyle = window.getComputedStyle;
     E.w3cRange = typeof document.createRange === 'function';
     E.hostname = location.hostname.toLowerCase();
-    E.websiteHost = 'wangeditor.github.io|www.wangeditor.com|wangeditor.coding.me';
+    E.websiteHost = 'qtyfeditor.github.io|www.qtyfeditor.com|qtyfeditor.coding.me';
     E.isOnWebsite = E.websiteHost.indexOf(E.hostname) >= 0;
-    E.docsite = 'http://www.kancloud.cn/wangfupeng/wangeditor2/113961';
+    E.docsite = 'http://www.kancloud.cn/qtyffupeng/qtyfeditor2/113961';
 
     // 暴露给全局对象
-    window.wangEditor = E;
+    window.qtyfEditor = E;
 
     // 注册 plugin 事件，用于用户自定义插件
-    // 用户在引用 wangEditor.js 之后，还可以通过 E.plugin() 注入自定义函数，
+    // 用户在引用 qtyfEditor.js 之后，还可以通过 E.plugin() 注入自定义函数，
     // 该函数将会在 editor.create() 方法的最后一步执行
     E.plugin = function (fn) {
         if (!E._plugins) {
@@ -1035,7 +1035,7 @@ _e(function (E, $) {
 
     MenuContainer.fn = MenuContainer.prototype;
 
-    // 暴露给 E 即 window.wangEditor
+    // 暴露给 E 即 window.qtyfEditor
     E.MenuContainer = MenuContainer;
 
 });
@@ -1047,7 +1047,7 @@ _e(function (E, $) {
     // 初始化
     MenuContainer.fn.init = function () {
         var self = this;
-        var $menuContainer = $('<div class="wangEditor-menu-container clearfix"></div>');
+        var $menuContainer = $('<div class="qtyfEditor-menu-container clearfix"></div>');
 
         self.$menuContainer = $menuContainer;
 
@@ -1063,9 +1063,9 @@ _e(function (E, $) {
 
         $txt.on('scroll', function () {
             if ($txt.scrollTop() > 10) {
-                $menuContainer.addClass('wangEditor-menu-shadow');
+                $menuContainer.addClass('qtyfEditor-menu-shadow');
             } else {
-                $menuContainer.removeClass('wangEditor-menu-shadow');
+                $menuContainer.removeClass('qtyfEditor-menu-shadow');
             }
         });
     };
@@ -1141,7 +1141,7 @@ _e(function (E, $) {
 
     Menu.fn = Menu.prototype;
 
-    // 暴露给 E 即 window.wangEditor
+    // 暴露给 E 即 window.qtyfEditor
     E.Menu = Menu;
 });
 // Menu.fn 初始化绑定的事件
@@ -1468,7 +1468,7 @@ _e(function (E, $) {
 
     DropList.fn = DropList.prototype;
 
-    // 暴露给 E 即 window.wangEditor
+    // 暴露给 E 即 window.qtyfEditor
     E.DropList = DropList;
 });
 // dropList fn bind
@@ -1495,7 +1495,7 @@ _e(function (E, $) {
         var self = this;
         var data = self.data;
         var tpl = self.tpl || '<span>{#title}</span>';
-        var $list = $('<div class="wangEditor-drop-list clearfix"></div>');
+        var $list = $('<div class="qtyfEditor-drop-list clearfix"></div>');
 
         var itemContent;
         var $item;
@@ -1726,7 +1726,7 @@ _e(function (E, $) {
 
     DropPanel.fn = DropPanel.prototype;
 
-    // 暴露给 E 即 window.wangEditor
+    // 暴露给 E 即 window.qtyfEditor
     E.DropPanel = DropPanel;
 });
 // dropPanel fn bind
@@ -1751,7 +1751,7 @@ _e(function (E, $) {
         var $content = self.$content;
         var width = self.width;
         var height = self.height;
-        var $panel = $('<div class="wangEditor-drop-panel clearfix"></div>');
+        var $panel = $('<div class="qtyfEditor-drop-panel clearfix"></div>');
         var $triangle = $('<div class="tip-triangle"></div>');
 
         $panel.css({
@@ -1982,7 +1982,7 @@ _e(function (E, $) {
 
     Modal.fn = Modal.prototype;
 
-    // 暴露给 E 即 window.wangEditor
+    // 暴露给 E 即 window.qtyfEditor
     E.Modal = Modal;
 });
 // modal fn bind
@@ -2004,8 +2004,8 @@ _e(function (E, $) {
     Modal.fn.initDom = function () {
         var self = this;
         var $content = self.$content;
-        var $modal = $('<div class="wangEditor-modal"></div>');
-        var $close = $('<div class="wangEditor-modal-close"><i class="wangeditor-menu-img-cancel-circle"></i></div>');
+        var $modal = $('<div class="qtyfEditor-modal"></div>');
+        var $close = $('<div class="qtyfEditor-modal-close"><i class="qtyfeditor-menu-img-cancel-circle"></i></div>');
 
         $modal.append($close);
         $modal.append($content);
@@ -2158,7 +2158,7 @@ _e(function (E, $) {
 
     Txt.fn = Txt.prototype;
 
-    // 暴露给 E 即 window.wangEditor
+    // 暴露给 E 即 window.qtyfEditor
     E.Txt = Txt;
 });
 // Txt.fn bind fn
@@ -2177,12 +2177,12 @@ _e(function (E, $) {
         if ($valueContainer.get(0).nodeName === 'DIV') {
             // 如果传入生成编辑器的元素就是div，则直接使用
             $txt = $valueContainer;
-            $txt.addClass("wangEditor-txt");
+            $txt.addClass("qtyfEditor-txt");
             $txt.attr('contentEditable', 'true');
         } else {
             // 如果不是div（是textarea），则创建一个div
             $txt = $(
-                '<div class="wangEditor-txt" contentEditable="true">' +
+                '<div class="qtyfEditor-txt" contentEditable="true">' +
                     currentValue +
                 '</div>'
             );
@@ -2760,9 +2760,9 @@ _e(function (E, $) {
             // 滚动式，菜单阴影
             $wrap.on('scroll', function () {
                 if ($txt.parent().scrollTop() > 10) {
-                    $menuContainer.addClass('wangEditor-menu-shadow');
+                    $menuContainer.addClass('qtyfEditor-menu-shadow');
                 } else {
-                    $menuContainer.removeClass('wangEditor-menu-shadow');
+                    $menuContainer.removeClass('qtyfEditor-menu-shadow');
                 }
             });
 
@@ -3070,7 +3070,7 @@ _e(function (E, $) {
             E[value] = function (info) {
                 // 通过配置来控制打印输出
                 if (E.config && E.config.printLog) {
-                    console[value]('wangEditor提示: ' + info);
+                    console[value]('qtyfEditor提示: ' + info);
                 }
             };
         }
@@ -3424,120 +3424,120 @@ _e(function (E, $) {
      E.UI.menus = {
         // 这个 default 不加引号，在 IE8 会报错
         'default': {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-command"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-command"></i></a>',
             selected: '.selected'
         },
         bold: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-bold"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-bold"></i></a>',
             selected: '.selected'
         },
         underline: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-underline"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-underline"></i></a>',
             selected: '.selected'
         },
         italic: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-italic"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-italic"></i></a>',
             selected: '.selected'
         },
         forecolor: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-pencil"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-pencil"></i></a>',
             selected: '.selected'
         },
         bgcolor: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-brush"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-brush"></i></a>',
             selected: '.selected'
         },
         strikethrough: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-strikethrough"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-strikethrough"></i></a>',
             selected: '.selected'
         },
         eraser: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-eraser"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-eraser"></i></a>',
             selected: '.selected'
         },
         quote: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-quotes-left"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-quotes-left"></i></a>',
             selected: '.selected'
         },
         source: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-code"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-code"></i></a>',
             selected: '.selected'
         },
         fontfamily: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-font2"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-font2"></i></a>',
             selected: '.selected'
         },
         fontsize: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-text-height"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-text-height"></i></a>',
             selected: '.selected'
         },
         head: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-header"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-header"></i></a>',
             selected: '.selected'
         },
         orderlist: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-list-numbered"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-list-numbered"></i></a>',
             selected: '.selected'
         },
         unorderlist: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-list-bullet"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-list-bullet"></i></a>',
             selected: '.selected'
         },
         alignleft: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-align-left"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-align-left"></i></a>',
             selected: '.selected'
         },
         aligncenter: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-align-center"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-align-center"></i></a>',
             selected: '.selected'
         },
         alignright: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-align-right"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-align-right"></i></a>',
             selected: '.selected'
         },
         link: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-link"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-link"></i></a>',
             selected: '.selected'
         },
         unlink: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-unlink"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-unlink"></i></a>',
             selected: '.selected'
         },
         table: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-table"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-table"></i></a>',
             selected: '.selected'
         },
         emotion: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-happy"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-happy"></i></a>',
             selected: '.selected'
         },
         img: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-picture"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-picture"></i></a>',
             selected: '.selected'
         },
         video: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-play"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-play"></i></a>',
             selected: '.selected'
         },
         location: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-location"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-location"></i></a>',
             selected: '.selected'
         },
         insertcode: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-terminal"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-terminal"></i></a>',
             selected: '.selected'
         },
         undo: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-ccw"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-ccw"></i></a>',
             selected: '.selected'
         },
         redo: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-cw"></i></a>',
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-cw"></i></a>',
             selected: '.selected'
         },
         fullscreen: {
-            normal: '<a href="#" tabindex="-1"><i class="wangeditor-menu-img-enlarge2"></i></a>',
-            selected: '<a href="#" tabindex="-1" class="selected"><i class="wangeditor-menu-img-shrink2"></i></a>'
+            normal: '<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-enlarge2"></i></a>',
+            selected: '<a href="#" tabindex="-1" class="selected"><i class="qtyfeditor-menu-img-shrink2"></i></a>'
         }
      };
      
@@ -3556,7 +3556,7 @@ _e(function (E, $) {
 _e(function (E, $) {
 
     E.fn.addEditorContainer = function () {
-        this.$editorContainer = $('<div class="wangEditor-container"></div>');
+        this.$editorContainer = $('<div class="qtyfEditor-container"></div>');
     };
 
 });
@@ -3746,7 +3746,7 @@ _e(function (E, $) {
                     '<a href="#" class="color-item"',
                     '    title="' + v + '" commandValue="' + k + '" ',
                     '    style="color: ' + k + '" ',
-                    '><i class="wangeditor-menu-img-pencil"></i></a>'
+                    '><i class="qtyfeditor-menu-img-pencil"></i></a>'
                 ].join('')
             );
         });
@@ -3822,7 +3822,7 @@ _e(function (E, $) {
                     '<a href="#" class="color-item"',
                     '    title="' + v + '" commandValue="' + k + '" ',
                     '    style="color: ' + k + '" ',
-                    '><i class="wangeditor-menu-img-brush"></i></a>'
+                    '><i class="qtyfeditor-menu-img-brush"></i></a>'
                 ].join('')
             );
         });
@@ -5429,7 +5429,7 @@ _e(function (E, $) {
                       .append($heightInput)
                       .append('<span> px </span>');
         var $btnContainer = $('<div></div>');
-        var $howToCopy = $('<a href="http://www.kancloud.cn/wangfupeng/wangeditor2/134973" target="_blank" style="display:inline-block;margin-top:10px;margin-left:10px;color:#999;">如何复制视频链接？</a>');
+        var $howToCopy = $('<a href="http://www.kancloud.cn/qtyffupeng/qtyfeditor2/134973" target="_blank" style="display:inline-block;margin-top:10px;margin-left:10px;color:#999;">如何复制视频链接？</a>');
         var $btnSubmit = $('<button class="right">' + lang.submit + '</button>');
         var $btnCancel = $('<button class="right gray">' + lang.cancel + '</button>');
         $btnContainer.append($howToCopy).append($btnSubmit).append($btnCancel);
@@ -6311,7 +6311,7 @@ _e(function (E, $) {
         menu.clickEvent = function (e) {
             // 增加样式
             var $editorContainer = editor.$editorContainer;
-            $editorContainer.addClass('wangEditor-fullscreen');
+            $editorContainer.addClass('qtyfEditor-fullscreen');
 
             // （先保存当前的）再设置z-index
             zIndex = $editorContainer.css('z-index');
@@ -6358,7 +6358,7 @@ _e(function (E, $) {
         menu.clickEventSelected = function (e) {
             // 取消样式
             var $editorContainer = editor.$editorContainer;
-            $editorContainer.removeClass('wangEditor-fullscreen');
+            $editorContainer.removeClass('qtyfEditor-fullscreen');
             $editorContainer.css('z-index', zIndex);
 
             // 还原height
@@ -6659,7 +6659,7 @@ _e(function (E, $) {
             var fileName = opt.filename || '';
             var base64 = opt.base64;
             var fileType = opt.fileType || 'image/png'; // 无扩展名则默认使用 png
-            var name = opt.name || 'wangEditor_upload_file';
+            var name = opt.name || 'qtyfEditor_upload_file';
             var loadfn = opt.loadfn || onload;
             var errorfn = opt.errorfn || onerror;
             var timeoutfn = opt.timeoutfn || ontimeout;
@@ -6785,7 +6785,7 @@ _e(function (E, $) {
         var menuHeight = menuContainer.height();
         var $editorContainer = editor.$editorContainer;
         var width = $editorContainer.width();
-        var $progress = $('<div class="wangEditor-upload-progress"></div>');
+        var $progress = $('<div class="qtyfEditor-upload-progress"></div>');
 
         // 渲染事件
         var isRender = false;
@@ -6850,7 +6850,7 @@ _e(function (E, $) {
         }
 
         // 自定义UI，并添加到上传dom节点上
-        var $uploadIcon = $('<div class="upload-icon-container"><i class="wangeditor-menu-img-upload"></i></div>');
+        var $uploadIcon = $('<div class="upload-icon-container"><i class="qtyfeditor-menu-img-upload"></i></div>');
         $uploadContent.append($uploadIcon);
 
         // ---------- 构建上传对象 ----------
@@ -6962,7 +6962,7 @@ _e(function (E, $) {
         var filename = file.name || '';
         var fileType = file.type || '';
         var uploadImgFns = editor.config.uploadImgFns;
-        var uploadFileName = editor.config.uploadImgFileName || 'wangEditorH5File';
+        var uploadFileName = editor.config.uploadImgFileName || 'qtyfEditorH5File';
         var onload = uploadImgFns.onload;
         var ontimeout = uploadImgFns.ontimeout;
         var onerror = uploadImgFns.onerror;
@@ -7001,7 +7001,7 @@ _e(function (E, $) {
                 errorfn: function (xhr) {
                     clearInput();
                     if (E.isOnWebsite) {
-                        alert('wangEditor官网暂时没有服务端，因此报错。实际项目中不会发生');
+                        alert('qtyfEditor官网暂时没有服务端，因此报错。实际项目中不会发生');
                     }
                     // 执行配置中的方法
                     var editor = this;
@@ -7010,7 +7010,7 @@ _e(function (E, $) {
                 timeoutfn: function (xhr) {
                     clearInput();
                     if (E.isOnWebsite) {
-                        alert('wangEditor官网暂时没有服务端，因此超时。实际项目中不会发生');
+                        alert('qtyfEditor官网暂时没有服务端，因此超时。实际项目中不会发生');
                     }
                     // 执行配置中的方法
                     var editor = this;
@@ -7061,7 +7061,7 @@ _e(function (E, $) {
     UploadFile.fn.render = function () {
         var self = this;
         var editor = self.editor;
-        var uploadFileName = editor.config.uploadImgFileName || 'wangEditorFormFile';
+        var uploadFileName = editor.config.uploadImgFileName || 'qtyfEditorFormFile';
         if (self._hasRender) {
             // 不要重复渲染
             return;
@@ -7203,7 +7203,7 @@ _e(function (E, $) {
         var $txt = txt.$txt;
         var config = editor.config;
         var uploadImgUrl = config.uploadImgUrl;
-        var uploadFileName = config.uploadImgFileName || 'wangEditorPasteFile';
+        var uploadFileName = config.uploadImgFileName || 'qtyfEditorPasteFile';
         var pasteEvent;
         var $imgsBeforePaste;
 
@@ -7339,7 +7339,7 @@ _e(function (E, $) {
         var $txt = txt.$txt;
         var config = editor.config;
         var uploadImgUrl = config.uploadImgUrl;
-        var uploadFileName = config.uploadImgFileName || 'wangEditorDragFile';
+        var uploadFileName = config.uploadImgFileName || 'qtyfEditorDragFile';
 
         // 未配置上传图片url，则忽略
         if (!uploadImgUrl) {
@@ -7411,9 +7411,9 @@ _e(function (E, $) {
         var isRendered = false;
         var $toolbar = $('<div class="txt-toolbar"></div>');
         var $triangle = $('<div class="tip-triangle"></div>');
-        var $delete = $('<a href="#"><i class="wangeditor-menu-img-trash-o"></i></a>');
-        var $zoomSmall = $('<a href="#"><i class="wangeditor-menu-img-search-minus"></i></a>');
-        var $zoomBig = $('<a href="#"><i class="wangeditor-menu-img-search-plus"></i></a>');
+        var $delete = $('<a href="#"><i class="qtyfeditor-menu-img-trash-o"></i></a>');
+        var $zoomSmall = $('<a href="#"><i class="qtyfeditor-menu-img-search-minus"></i></a>');
+        var $zoomBig = $('<a href="#"><i class="qtyfeditor-menu-img-search-plus"></i></a>');
 
         // 渲染到页面
         function render() {
@@ -7609,17 +7609,17 @@ _e(function (E, $) {
         var $triangle = $('<div class="tip-triangle"></div>');
 
         var $menuContainer = $('<div></div>');
-        var $delete = $('<a href="#"><i class="wangeditor-menu-img-trash-o"></i></a>');
-        var $zoomSmall = $('<a href="#"><i class="wangeditor-menu-img-search-minus"></i></a>');
-        var $zoomBig = $('<a href="#"><i class="wangeditor-menu-img-search-plus"></i></a>');
-        // var $floatLeft = $('<a href="#"><i class="wangeditor-menu-img-align-left"></i></a>');
-        // var $noFloat = $('<a href="#"><i class="wangeditor-menu-img-align-justify"></i></a>');
-        // var $floatRight = $('<a href="#"><i class="wangeditor-menu-img-align-right"></i></a>');
-        var $alignLeft = $('<a href="#"><i class="wangeditor-menu-img-align-left"></i></a>');
-        var $alignCenter = $('<a href="#"><i class="wangeditor-menu-img-align-center"></i></a>');
-        var $alignRight = $('<a href="#"><i class="wangeditor-menu-img-align-right"></i></a>');
-        var $link = $('<a href="#"><i class="wangeditor-menu-img-link"></i></a>');
-        var $unLink = $('<a href="#"><i class="wangeditor-menu-img-unlink"></i></a>');
+        var $delete = $('<a href="#"><i class="qtyfeditor-menu-img-trash-o"></i></a>');
+        var $zoomSmall = $('<a href="#"><i class="qtyfeditor-menu-img-search-minus"></i></a>');
+        var $zoomBig = $('<a href="#"><i class="qtyfeditor-menu-img-search-plus"></i></a>');
+        // var $floatLeft = $('<a href="#"><i class="qtyfeditor-menu-img-align-left"></i></a>');
+        // var $noFloat = $('<a href="#"><i class="qtyfeditor-menu-img-align-justify"></i></a>');
+        // var $floatRight = $('<a href="#"><i class="qtyfeditor-menu-img-align-right"></i></a>');
+        var $alignLeft = $('<a href="#"><i class="qtyfeditor-menu-img-align-left"></i></a>');
+        var $alignCenter = $('<a href="#"><i class="qtyfeditor-menu-img-align-center"></i></a>');
+        var $alignRight = $('<a href="#"><i class="qtyfeditor-menu-img-align-right"></i></a>');
+        var $link = $('<a href="#"><i class="qtyfeditor-menu-img-link"></i></a>');
+        var $unLink = $('<a href="#"><i class="qtyfeditor-menu-img-unlink"></i></a>');
 
         var $linkInputContainer = $('<div style="display:none;"></div>');
         var $linkInput = $('<input type="text" style="height:26px; margin-left:10px; width:200px;"/>');
@@ -8151,7 +8151,7 @@ _e(function (E, $) {
 
         var $toolbar = $('<div class="txt-toolbar"></div>');
         var $triangle = $('<div class="tip-triangle"></div>');
-        var $triggerLink = $('<a href="#" target="_blank"><i class="wangeditor-menu-img-link"></i> ' + lang.openLink + '</a>');
+        var $triggerLink = $('<a href="#" target="_blank"><i class="qtyfeditor-menu-img-link"></i> ' + lang.openLink + '</a>');
         var isRendered;
 
         // 记录当前的显示/隐藏状态
@@ -8406,8 +8406,8 @@ _e(function (E, $) {
             title: '缩进', // 菜单标题
 
             // 正常状态和选中装下的dom对象，样式需要自定义
-            $domNormal: $('<a href="#" tabindex="-1"><i class="wangeditor-menu-img-indent-left"></i></a>'),
-            $domSelected: $('<a href="#" tabindex="-1" class="selected"><i class="wangeditor-menu-img-indent-left"></i></a>')
+            $domNormal: $('<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-indent-left"></i></a>'),
+            $domSelected: $('<a href="#" tabindex="-1" class="selected"><i class="qtyfeditor-menu-img-indent-left"></i></a>')
         });
 
         // 菜单正常状态下，点击将触发该事件
@@ -8512,8 +8512,8 @@ _e(function (E, $) {
             commandName: 'lineHeight', // 命令名称
 
             // 正常状态和选中装下的dom对象，样式需要自定义
-            $domNormal: $('<a href="#" tabindex="-1"><i class="wangeditor-menu-img-arrows-v"></i></a>'),
-            $domSelected: $('<a href="#" tabindex="-1" class="selected"><i class="wangeditor-menu-img-arrows-v"></i></a>')
+            $domNormal: $('<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-arrows-v"></i></a>'),
+            $domSelected: $('<a href="#" tabindex="-1" class="selected"><i class="qtyfeditor-menu-img-arrows-v"></i></a>')
         });
 
         // 数据源
@@ -8561,7 +8561,7 @@ _e(function (E, $) {
         }
 
         // UI
-        var $uploadIcon = $('<div class="upload-icon-container"><i class="wangeditor-menu-img-upload"></i></div>');
+        var $uploadIcon = $('<div class="upload-icon-container"><i class="qtyfeditor-menu-img-upload"></i></div>');
         $uploadContent.append($uploadIcon);
 
         // 设置id，并暴露
@@ -8577,9 +8577,9 @@ _e(function (E, $) {
 });
 // 版权提示
 _e(function (E, $) {
-    E.info('本页面富文本编辑器由 wangEditor 提供 http://wangeditor.github.io/ ');
+    E.info('本页面富文本编辑器由 qtyfEditor 提供 http://qtyfeditor.github.io/ ');
 });
     
-    // 最终返回wangEditor构造函数
-    return window.wangEditor;
+    // 最终返回qtyfEditor构造函数
+    return window.qtyfEditor;
 });

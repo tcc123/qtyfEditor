@@ -22,7 +22,7 @@
 // ---------- end 全局颜色配置 ------------
 
 
-.wangEditor-container {
+.qtyfEditor-container {
     position: relative;
     background-color: #fff;
     border: 1px solid @border-color;
@@ -124,7 +124,7 @@
     }
 
     // 进度条
-    .wangEditor-upload-progress {
+    .qtyfEditor-upload-progress {
         position: absolute;
         height: 1px;
         background: #1e88e5;
@@ -135,14 +135,14 @@
         transition: width .5s;
     }
 }
-.wangEditor-fullscreen {
+.qtyfEditor-fullscreen {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
 }
-.wangEditor-container {
+.qtyfEditor-container {
     .code-textarea {
         resize: none;
         width: 100%;
@@ -153,7 +153,7 @@
         padding: 0 15px 0 15px;
     }
 }
-.wangEditor-menu-container {
+.qtyfEditor-menu-container {
 
     width: 100%;
     border-bottom: 1px solid #f1f1f1;
@@ -250,13 +250,13 @@
         margin-left: -25px;
     }
 }
-.wangEditor-menu-shadow {
+.qtyfEditor-menu-shadow {
     /*border-bottom-width: 0;*/
     border-bottom: 1px\9 solid\9 #f1f1f1\9;
     box-shadow: 0 1px 3px #999;
 }
-.wangEditor-container {
-    .wangEditor-txt{
+.qtyfEditor-container {
+    .qtyfEditor-txt{
         width: 100%;
         text-align: left;
         padding: 15px;
@@ -297,8 +297,8 @@
         }
     }
 }
-.wangEditor-container {
-    .wangEditor-txt {
+.qtyfEditor-container {
+    .qtyfEditor-txt {
         blockquote {
             display: block; 
             border-left: 8px solid #d0e5f2;
@@ -329,7 +329,7 @@
         }
     }
 }
-.wangEditor-drop-list {
+.qtyfEditor-drop-list {
     display: none;
     position: absolute;
     background-color: #fff;
@@ -357,7 +357,7 @@
         }
     }
 }
-.wangEditor-drop-panel,
+.qtyfEditor-drop-panel,
 .txt-toolbar {
     display: none;
     position: absolute;
@@ -557,7 +557,7 @@
         }
     }
 }
-.wangEditor-modal {
+.qtyfEditor-modal {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -573,7 +573,7 @@
     border-right: 1px\9 solid\9 #999\9;
 
     // 关闭按钮
-    .wangEditor-modal-close {
+    .qtyfEditor-modal-close {
         position: absolute;
         top: 0;
         right: 0;
@@ -596,7 +596,7 @@
     font-style: normal;
 }
 
-[class^="wangeditor-menu-img-"], [class*=" wangeditor-menu-img-"] {
+[class^="qtyfeditor-menu-img-"], [class*=" qtyfeditor-menu-img-"] {
     font-family: 'icomoon';
     speak: none;
     font-style: normal;
@@ -609,86 +609,86 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.wangeditor-menu-img-link:before {content: "\e800";}
-.wangeditor-menu-img-unlink:before {content: "\e801";}
-.wangeditor-menu-img-code:before {content: "\e802";}
-.wangeditor-menu-img-cancel:before {content: "\e803";}
-.wangeditor-menu-img-terminal:before {content: "\e804";}
-.wangeditor-menu-img-angle-down:before {content: "\e805";}
-.wangeditor-menu-img-font:before {content: "\e806";}
-.wangeditor-menu-img-bold:before {content: "\e807";}
-.wangeditor-menu-img-italic:before {content: "\e808";}
-.wangeditor-menu-img-header:before {content: "\e809";}
-.wangeditor-menu-img-align-left:before {content: "\e80a";}
-.wangeditor-menu-img-align-center:before {content: "\e80b";}
-.wangeditor-menu-img-align-right:before {content: "\e80c";}
-.wangeditor-menu-img-list-bullet:before {content: "\e80d";}
-.wangeditor-menu-img-indent-left:before {content: "\e80e";}
-.wangeditor-menu-img-indent-right:before {content: "\e80f";}
-.wangeditor-menu-img-list-numbered:before {content: "\e810";}
-.wangeditor-menu-img-underline:before {content: "\e811";}
-.wangeditor-menu-img-table:before {content: "\e812";}
-.wangeditor-menu-img-eraser:before {content: "\e813";}
-.wangeditor-menu-img-text-height:before {content: "\e814";}
-.wangeditor-menu-img-brush:before {content: "\e815";}
-.wangeditor-menu-img-pencil:before {content: "\e816";}
-.wangeditor-menu-img-minus:before {content: "\e817";}
-.wangeditor-menu-img-picture:before {content: "\e818";}
-.wangeditor-menu-img-file-image:before {content: "\e819";}
-.wangeditor-menu-img-cw:before {content: "\e81a";}
-.wangeditor-menu-img-ccw:before {content: "\e81b";}
-.wangeditor-menu-img-music:before {content: "\e911";}
-.wangeditor-menu-img-play:before {content: "\e912";}
-.wangeditor-menu-img-location:before {content: "\e947";}
-.wangeditor-menu-img-happy:before {content: "\e9df";}
-.wangeditor-menu-img-sigma:before {content: "\ea67";}
-.wangeditor-menu-img-enlarge2:before {content: "\e98b";}
-.wangeditor-menu-img-shrink2:before {content: "\e98c";}
-.wangeditor-menu-img-newspaper:before{content: "\e904";}
-.wangeditor-menu-img-camera:before{content: "\e90f";}
-.wangeditor-menu-img-video-camera:before{content: "\e914";}
-.wangeditor-menu-img-file-zip:before{content: "\e92b";}
-.wangeditor-menu-img-stack:before{content: "\e92e";}
-.wangeditor-menu-img-credit-card:before{content: "\e93f";}
-.wangeditor-menu-img-address-book:before{content: "\e944";}
-.wangeditor-menu-img-envelop:before{content: "\e945";}
-.wangeditor-menu-img-drawer:before{content: "\e95c";}
-.wangeditor-menu-img-download:before{content: "\e960";}
-.wangeditor-menu-img-upload:before{content: "\e961";}
-.wangeditor-menu-img-lock:before{content: "\e98f";}
-.wangeditor-menu-img-unlocked:before{content: "\e990";}
-.wangeditor-menu-img-wrench:before{content: "\e991";}
-.wangeditor-menu-img-eye:before{content: "\e9ce";}
-.wangeditor-menu-img-eye-blocked:before{content: "\e9d1";}
-.wangeditor-menu-img-command:before{content: "\ea4e";}
-.wangeditor-menu-img-font2:before{content: "\ea5c";}
-.wangeditor-menu-img-libreoffice:before{content: "\eade";}
-.wangeditor-menu-img-quotes-left:before{content: "\e977";}
-.wangeditor-menu-img-strikethrough:before{content: "\ea65";}
-.wangeditor-menu-img-desktop:before{content: "\f108";}
-.wangeditor-menu-img-tablet:before{content: "\f10a";}
-.wangeditor-menu-img-search-plus:before {
+.qtyfeditor-menu-img-link:before {content: "\e800";}
+.qtyfeditor-menu-img-unlink:before {content: "\e801";}
+.qtyfeditor-menu-img-code:before {content: "\e802";}
+.qtyfeditor-menu-img-cancel:before {content: "\e803";}
+.qtyfeditor-menu-img-terminal:before {content: "\e804";}
+.qtyfeditor-menu-img-angle-down:before {content: "\e805";}
+.qtyfeditor-menu-img-font:before {content: "\e806";}
+.qtyfeditor-menu-img-bold:before {content: "\e807";}
+.qtyfeditor-menu-img-italic:before {content: "\e808";}
+.qtyfeditor-menu-img-header:before {content: "\e809";}
+.qtyfeditor-menu-img-align-left:before {content: "\e80a";}
+.qtyfeditor-menu-img-align-center:before {content: "\e80b";}
+.qtyfeditor-menu-img-align-right:before {content: "\e80c";}
+.qtyfeditor-menu-img-list-bullet:before {content: "\e80d";}
+.qtyfeditor-menu-img-indent-left:before {content: "\e80e";}
+.qtyfeditor-menu-img-indent-right:before {content: "\e80f";}
+.qtyfeditor-menu-img-list-numbered:before {content: "\e810";}
+.qtyfeditor-menu-img-underline:before {content: "\e811";}
+.qtyfeditor-menu-img-table:before {content: "\e812";}
+.qtyfeditor-menu-img-eraser:before {content: "\e813";}
+.qtyfeditor-menu-img-text-height:before {content: "\e814";}
+.qtyfeditor-menu-img-brush:before {content: "\e815";}
+.qtyfeditor-menu-img-pencil:before {content: "\e816";}
+.qtyfeditor-menu-img-minus:before {content: "\e817";}
+.qtyfeditor-menu-img-picture:before {content: "\e818";}
+.qtyfeditor-menu-img-file-image:before {content: "\e819";}
+.qtyfeditor-menu-img-cw:before {content: "\e81a";}
+.qtyfeditor-menu-img-ccw:before {content: "\e81b";}
+.qtyfeditor-menu-img-music:before {content: "\e911";}
+.qtyfeditor-menu-img-play:before {content: "\e912";}
+.qtyfeditor-menu-img-location:before {content: "\e947";}
+.qtyfeditor-menu-img-happy:before {content: "\e9df";}
+.qtyfeditor-menu-img-sigma:before {content: "\ea67";}
+.qtyfeditor-menu-img-enlarge2:before {content: "\e98b";}
+.qtyfeditor-menu-img-shrink2:before {content: "\e98c";}
+.qtyfeditor-menu-img-newspaper:before{content: "\e904";}
+.qtyfeditor-menu-img-camera:before{content: "\e90f";}
+.qtyfeditor-menu-img-video-camera:before{content: "\e914";}
+.qtyfeditor-menu-img-file-zip:before{content: "\e92b";}
+.qtyfeditor-menu-img-stack:before{content: "\e92e";}
+.qtyfeditor-menu-img-credit-card:before{content: "\e93f";}
+.qtyfeditor-menu-img-address-book:before{content: "\e944";}
+.qtyfeditor-menu-img-envelop:before{content: "\e945";}
+.qtyfeditor-menu-img-drawer:before{content: "\e95c";}
+.qtyfeditor-menu-img-download:before{content: "\e960";}
+.qtyfeditor-menu-img-upload:before{content: "\e961";}
+.qtyfeditor-menu-img-lock:before{content: "\e98f";}
+.qtyfeditor-menu-img-unlocked:before{content: "\e990";}
+.qtyfeditor-menu-img-wrench:before{content: "\e991";}
+.qtyfeditor-menu-img-eye:before{content: "\e9ce";}
+.qtyfeditor-menu-img-eye-blocked:before{content: "\e9d1";}
+.qtyfeditor-menu-img-command:before{content: "\ea4e";}
+.qtyfeditor-menu-img-font2:before{content: "\ea5c";}
+.qtyfeditor-menu-img-libreoffice:before{content: "\eade";}
+.qtyfeditor-menu-img-quotes-left:before{content: "\e977";}
+.qtyfeditor-menu-img-strikethrough:before{content: "\ea65";}
+.qtyfeditor-menu-img-desktop:before{content: "\f108";}
+.qtyfeditor-menu-img-tablet:before{content: "\f10a";}
+.qtyfeditor-menu-img-search-plus:before {
     content: "\f00e";
 }
-.wangeditor-menu-img-search-minus:before {
+.qtyfeditor-menu-img-search-minus:before {
     content: "\f010";
 }
-.wangeditor-menu-img-trash-o:before {
+.qtyfeditor-menu-img-trash-o:before {
     content: "\f014";
 }
-.wangeditor-menu-img-align-justify:before {
+.qtyfeditor-menu-img-align-justify:before {
     content: "\f039";
 }
-.wangeditor-menu-img-arrows-v:before {
+.qtyfeditor-menu-img-arrows-v:before {
     content: "\f07d";
 }
-.wangeditor-menu-img-sigma2:before {
+.qtyfeditor-menu-img-sigma2:before {
     content: "\ea68";
 }
-.wangeditor-menu-img-omega:before {
+.qtyfeditor-menu-img-omega:before {
     content: "\e900";
 }
-.wangeditor-menu-img-cancel-circle:before {
+.qtyfeditor-menu-img-cancel-circle:before {
     content: "\e901";
 }
 .hljs {

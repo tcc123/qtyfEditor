@@ -1,16 +1,16 @@
 {
-  "_from": "wangeditor@2.1.23",
-  "_id": "wangeditor@2.1.23",
+  "_from": "qtyfeditor@2.1.23",
+  "_id": "qtyfeditor@2.1.23",
   "_inBundle": false,
   "_integrity": "sha1-WbptIkyyFuvJ1AzpJzJpDZmH+3o=",
-  "_location": "/wangeditor",
+  "_location": "/qtyfeditor",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "wangeditor@2.1.23",
-    "name": "wangeditor",
-    "escapedName": "wangeditor",
+    "raw": "qtyfeditor@2.1.23",
+    "name": "qtyfeditor",
+    "escapedName": "qtyfeditor",
     "rawSpec": "2.1.23",
     "saveSpec": null,
     "fetchSpec": "2.1.23"
@@ -19,23 +19,23 @@
     "#USER",
     "/"
   ],
-  "_resolved": "http://registry.npm.taobao.org/wangeditor/download/wangeditor-2.1.23.tgz",
+  "_resolved": "http://registry.npm.taobao.org/qtyfeditor/download/qtyfeditor-2.1.23.tgz",
   "_shasum": "59ba6d224cb216ebc9d40ce92732690d9987fb7a",
-  "_spec": "wangeditor@2.1.23",
+  "_spec": "qtyfeditor@2.1.23",
   "_where": "/Users/huoalong/project/fdp_web",
   "author": {
-    "name": "wangfupeng1988",
-    "url": "https://github.com/wangfupeng1988"
+    "name": "qtyffupeng1988",
+    "url": "https://github.com/qtyffupeng1988"
   },
   "bugs": {
-    "url": "https://github.com/wangfupeng1988/wangEditor/issues"
+    "url": "https://github.com/qtyffupeng1988/qtyfEditor/issues"
   },
   "bundleDependencies": false,
   "dependencies": {
     "jquery": "^2.2.3"
   },
   "deprecated": false,
-  "description": "wangEditor - 基于javascript和css开发的 Web富文本编辑器， 轻量、简洁、易用、开源免费",
+  "description": "qtyfEditor - 基于javascript和css开发的 Web富文本编辑器， 轻量、简洁、易用、开源免费",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",
@@ -46,30 +46,30 @@
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1"
   },
-  "homepage": "http://wangeditor.github.io/",
+  "homepage": "http://qtyfeditor.github.io/",
   "keywords": [
-    "wangEditor",
+    "qtyfEditor",
     "富文本编辑器"
   ],
-  "main": "dist/js/wangEditor.js",
+  "main": "dist/js/qtyfEditor.js",
   "maintainers": [
     {
-      "name": "wangfupeng1988",
-      "email": "wangfupeng1988@163.com",
-      "url": "http://www.cnblogs.com/wangfupeng1988/default.html?OnlyTitle=1"
+      "name": "qtyffupeng1988",
+      "email": "qtyffupeng1988@163.com",
+      "url": "http://www.cnblogs.com/qtyffupeng1988/default.html?OnlyTitle=1"
     }
   ],
-  "name": "wangeditor",
+  "name": "qtyfeditor",
   "repositories": [
     {
       "type": "git",
-      "url": "git+https://github.com/wangfupeng1988/wangEditor.git"
+      "url": "git+https://github.com/qtyffupeng1988/qtyfEditor.git"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangfupeng1988/wangEditor.git"
+    "url": "git+https://github.com/qtyffupeng1988/qtyfEditor.git"
   },
-  "title": "wangEditor",
+  "title": "qtyfEditor",
   "version": "2.1.23"
 }

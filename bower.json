@@ -1,16 +1,16 @@
 {
-  "name": "wangEditor",
-  "description": "wangEditor - 基于javascript和css开发的 Web富文本编辑器， 轻量、简洁、易用、开源免费",
-  "main": "dist/js/wangEditor.js",
+  "name": "qtyfEditor",
+  "description": "qtyfEditor - 基于javascript和css开发的 Web富文本编辑器， 轻量、简洁、易用、开源免费",
+  "main": "dist/js/qtyfEditor.js",
   "authors": [
-    "wangfupeng <wangfupeng1988@163.com>"
+    "qtyffupeng <qtyffupeng1988@163.com>"
   ],
   "license": "MIT",
   "keywords": [
-    "wangEditor",
+    "qtyfEditor",
     "富文本编辑器"
   ],
-  "homepage": "https://github.com/wangfupeng1988/wangEditor",
+  "homepage": "https://github.com/qtyffupeng1988/qtyfEditor",
   "moduleType":  [
     "amd",
     "cmd",
