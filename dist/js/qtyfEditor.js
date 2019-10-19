@@ -26,7 +26,6 @@
         factory(window.jQuery);
     }
 })(function($){
-    
     // 验证是否引用jquery
     if (!$ || !$.fn || !$.fn.jquery) {
         alert('在引用qtyfEditor.js之前，先引用jQuery，否则无法使用 qtyfEditor');
@@ -75,6 +74,7 @@
 
         // ------------------初始化------------------
         this.init();
+        
     };
 
     E.fn = E.prototype;
@@ -3262,28 +3262,82 @@ _e(function (E, $) {
 
     // 颜色配置
     E.config.colors = {
-        // 'value': 'title'
-        '#880000': '暗红色',
-        '#800080': '紫色',
-        '#ff0000': '红色',
-        '#ff00ff': '鲜粉色',
-        '#000080': '深蓝色',
-        '#0000ff': '蓝色',
-        '#00ffff': '湖蓝色',
-        '#008080': '蓝绿色',
-        '#008000': '绿色',
-        '#808000': '橄榄色',
-        '#00ff00': '浅绿色',
-        '#ffcc00': '橙黄色',
-        '#808080': '灰色',
-        '#c0c0c0': '银色',
-        '#000000': '黑色',
-        '#ffffff': '白色'
+        '#ffffff': '#ffffff',
+        '#000000': '#000000',
+        '#eeece1': '#eeece1',
+        '#1f497d': '#1f497d',
+        '#4f81bd': '#4f81bd',
+        '#c0504d': '#c0504d',
+        '#9bbb59': '#9bbb59',
+        '#8064a2': '#8064a2',
+        '#4bacc6': '#4bacc6',
+        '#f79646': '#f79646',
+        '#f2f2f2': '#f2f2f2',
+        '#7f7f7f': '#7f7f7f',
+        '#ddd9c3': '#ddd9c3',
+        '#c6d9f0': '#c6d9f0',
+        '#dbe5f1': '#dbe5f1',
+        '#f2dcdb': '#f2dcdb',
+        '#ebf1dd': '#ebf1dd',
+        '#e5e0ec': '#e5e0ec',
+        '#dbeef3': '#dbeef3',
+        '#fdeada': '#fdeada',
+
+        '#d8d8d8': '#d8d8d8',
+        '#595959': '#595959',
+        '#c4bd97': '#c4bd97',
+        '#8db3e2': '#8db3e2',
+        '#b8cce4': '#b8cce4',
+        '#e5b9b7': '#e5b9b7',
+        '#d7e3bc': '#d7e3bc',
+        '#ccc1d9': '#ccc1d9',
+        '#b7dde8': '#b7dde8',
+        '#fbd5b5': '#fbd5b5',
+        '#bfbfbf': '#bfbfbf',
+        '#3f3f3f': '#3f3f3f',
+        '#938953': '#938953',
+        '#548dd4': '#548dd4',
+        '#95b3d7': '#95b3d7',
+        '#d99694': '#d99694',
+        '#c3d69b': '#c3d69b',
+        '#b2a2c7': '#b2a2c7',
+        '#92cddc': '#92cddc',
+        '#fac08f': '#fac08f',
+        '#a5a5a5': '#a5a5a5',
+        '#262626': '#262626',
+        '#494429': '#494429',
+        '#17365d': '#17365d',
+        '#366092': '#366092',
+        '#953734': '#953734',
+        '#76923c': '#76923c',
+        '#5f497a': '#5f497a',
+        '#31859b': '#31859b',
+        '#e36c09': '#e36c09',
+        '#7f7f7e': '#7f7f7e',
+        '#0c0c0c': '#0c0c0c',
+        '#1d1b10': '#1d1b10',
+        '#0f243e': '#0f243e',
+        '#244061': '#244061',
+        '#632423': '#632423',
+        '#4f6128': '#4f6128',
+        '#3f3151': '#3f3151',
+        '#205867': '#205867',
+        '#974806': '#974806',
+        '#c00000': '#c00000',
+        '#ff0000': '#ff0000',
+        '#ffc000': '#ffc000',
+        '#ffff00': '#ffff00',
+        '#92d050': '#92d050',
+        '#00b050': '#00b050',
+        '#00b0f0': '#00b0f0',
+        '#0070c0': '#0070c0',
+        '#002060': '#002060',
+        '#7030a0': '#7030a0'
     };
 
     // 字体
     E.config.familys = [
-        '宋体', '黑体', '楷体', '微软雅黑',
+        '宋体', '黑体', '楷体', '微软雅黑', '隶书', '华文行楷',
         'Arial', 'Verdana', 'Georgia',
         'Times New Roman', 'Microsoft JhengHei',
         'Trebuchet MS', 'Courier New', 'Impact', 'Comic Sans MS', 'Consolas'
@@ -3738,15 +3792,26 @@ _e(function (E, $) {
             title: lang.forecolor
         });
 
+        // 点击颜色菜单将触发该事件
+        menu.clickEvent = function (e) {
+            menu.dropPanel.show();
+            Object.keys(editor.menus).filter(e => e !== 'forecolor').map(key => editor.menus[key].dropPanel && editor.menus[key].dropPanel.hide());
+        };
+
         // 创建 dropPanel
-        var $content = $('<div></div>');
+        var $content = $('<div><p style="margin-bottom: 3px;">主题色: </p></div>');
         $.each(configColors, function (k, v) {
+            if (k === '#f2f2f2') {
+                $content.append('<p style="height: 21px;"></p>')
+            } else if (k === '#c00000') {
+                $content.append('<a style="line-height: 20px;">标准色: </a><br/>')
+            }
             $content.append(
                 [
                     '<a href="#" class="color-item"',
                     '    title="' + v + '" commandValue="' + k + '" ',
-                    '    style="color: ' + k + '" ',
-                    '><i class="qtyfeditor-menu-img-pencil"></i></a>'
+                    '    style="width: 14px; height: 14px; margin-right: 5px; background: ' + k + '; border: 1px solid #aaa;" ',
+                    '></a>'
                 ].join('')
             );
         });
@@ -3765,7 +3830,7 @@ _e(function (E, $) {
         });
         menu.dropPanel = new E.DropPanel(editor, menu, {
             $content: $content,
-            width: 125
+            width: 210
         });
 
         // 定义 update selected 事件
@@ -3814,15 +3879,26 @@ _e(function (E, $) {
             title: lang.bgcolor
         });
 
+        // 点击背景菜单将触发该事件
+        menu.clickEvent = function (e) {
+            menu.dropPanel.show();
+            Object.keys(editor.menus).filter(e => e !== 'bgcolor').map(key => editor.menus[key].dropPanel && editor.menus[key].dropPanel.hide());
+        };
+
         // 创建 dropPanel
-        var $content = $('<div></div>');
+        var $content = $('<div><p style="margin-bottom: 3px;">主题色: </p></div>');
         $.each(configColors, function (k, v) {
+            if (k === '#f2f2f2') {
+                $content.append('<p style="height: 21px;"></p>')
+            } else if (k === '#c00000') {
+                $content.append('<a style="line-height: 20px;">标准色: </a><br/>')
+            }
             $content.append(
                 [
                     '<a href="#" class="color-item"',
                     '    title="' + v + '" commandValue="' + k + '" ',
-                    '    style="color: ' + k + '" ',
-                    '><i class="qtyfeditor-menu-img-brush"></i></a>'
+                    '    style="width: 14px; height: 14px; margin-right: 5px; background: ' + k + '; border: 1px solid #aaa;" ',
+                    '></a>'
                 ].join('')
             );
         });
@@ -3845,7 +3921,7 @@ _e(function (E, $) {
         });
         menu.dropPanel = new E.DropPanel(editor, menu, {
             $content: $content,
-            width: 125
+            width: 210
         });
 
         // 定义 update selected 事件
@@ -8575,11 +8651,1242 @@ _e(function (E, $) {
     });
 
 });
+// 重写视频上传插件
+_e(function (E, $) {
+    // 用 createMenu 方法创建菜单
+    E.createMenu(function (check) {
+        var editor = this;
+        // 定义菜单id，不要和其他菜单id重复。编辑器自带的所有菜单id
+        var menuId = 'huoalong';
+
+        // check将检查菜单配置是否有该菜单id，如果没有，则忽略下面的代码。
+        if (!check(menuId)) {
+            return;
+        }
+        var lang = editor.config.lang;
+        // 创建 menu 对象
+        var menu = new E.Menu({
+            editor: editor,  // 编辑器对象
+            id: menuId,  // 菜单id
+            title: '视频', // 菜单标题
+
+            // 正常状态和选中状态下的dom对象，样式需要自定义
+            $domNormal: $('<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-play"></i></a>'),
+            $domSelected: $('<a href="#" tabindex="-1" class="selected"><i class="qtyfeditor-menu-img-play"></i></a>')
+        });
+
+        // 点击视频菜单将触发该事件
+        menu.clickEvent = function (e) {
+            menu.dropPanel.show();
+            Object.keys(editor.menus).filter(e => e !== 'huoalong').map(key => editor.menus[key].dropPanel && editor.menus[key].dropPanel.hide());
+        };
+        ['link', 'table', 'insertcode'].map(key => {
+            editor.menus[key].clickEvent = function() {
+                editor.menus['huoalong'].dropPanel.hide();
+                editor.menus['imgs'].dropPanel.hide();
+                editor.menus['bgcolor'].dropPanel.hide();
+                editor.menus['forecolor'].dropPanel.hide();
+                editor.menus[key].dropPanel && editor.menus[key].dropPanel.show();
+            }
+        })
+        //  点击图标异步加载表情并隐藏视频'emotion'
+        editor.menus['emotion'].clickEvent = function(e) {
+            menu.dropPanel.hide();
+            let emotion = editor.menus['emotion'];
+            let dropPanel = emotion.dropPanel;
+
+            // -------------隐藏-------------
+            if (dropPanel.isShowing) {
+                dropPanel.hide();
+                return;
+            }
+
+            // -------------显示-------------
+            dropPanel.show();
+
+            // 异步加载图片
+            if (emotion.imgLoaded) {
+                return;
+            }
+            $('.emotion-content-container').find('img').each(function () {
+                var $img = $(this);
+                var _src = $img.attr('_src');
+                $img.on('error', function () {
+                    E.error('加载不出表情图片 ' + _src);
+                });
+                $img.attr('src', _src);
+                $img.removeAttr('_src');
+            });
+            emotion.imgLoaded = true;
+        }
+        // 视频 点击其他地方，不隐藏 dropPanel
+        E.DropPanel.fn.initHideEvent = function () {
+            var self = this;
+
+            // 获取 panel elem
+            var thisPanle = self.$panel.get(0);
+
+            E.$body.on('click', function (e) {
+                if (!self.isShowing) {
+                    return;
+                }
+                var trigger = e.target;
+
+                // 获取菜单elem
+                var menu = self.menu;
+                var menuDom;
+                if (menu.selected) {
+                    menuDom = menu.$domSelected.get(0);
+                } else {
+                    menuDom = menu.$domNormal.get(0);
+                }
+
+                if (menuDom === trigger || $.contains(menuDom, trigger)) {
+                    // 说明由本菜单点击触发的
+                    return;
+                }
+
+                if (thisPanle === trigger || $.contains(thisPanle, trigger)) {
+                    // 说明由本panel点击触发的
+                    return;
+                }
+
+                // 其他情况，不隐藏 panel
+                // self.hide();
+            });
+            // 滚动放缩页面都不隐藏panel
+            E.$window.scroll(function (e) {
+
+            });
+
+            E.$window.on('resize', function () {
+
+            });
+        };
+        // 创建 panel 内容
+        var $content = $('<div></div>');
+
+        // 上传视频 content
+        var $contentContainer = $('<div id="container" class="content-container"></div>');
+        var $uploadContentVideo = $('<div class="content"><h1 style="margin-bottom: 20px;">上传视频</h1></div>');
+        $contentContainer.append($uploadContentVideo);
+        
+        var $sizeContainer = $('<div style="margin:20px 10px;">格式设置: &nbsp;&nbsp;</div>');
+        var $widthInput = $('<input type="text" value="380" style="width:50px;text-align:center;"/>');
+        var $heightInput = $('<input type="text" value="215" style="width:50px;text-align:center;"/>');
+        $sizeContainer.append('<span> ' + lang.width + ' </span>')
+                    .append($widthInput)
+                    .append('<span> px &nbsp;&nbsp;&nbsp;</span>')
+                    .append('<span> ' + lang.height + ' </span>')
+                    .append($heightInput)
+                    .append('<span> px </span>');
+        // 初始化视频的宽高
+        E.$width = 380;
+        E.$height = 215;
+        var $btnContainer = $('<div></div>');
+        var $btnSubmit = $('<button class="right">' + '确认' + '</button>');
+        var $btnCancel = $('<button class="right gray">' + '关闭' + '</button>');
+        $btnContainer.append($btnSubmit).append($btnCancel);
+        $content.append($contentContainer).append($sizeContainer).append($btnContainer);
+
+        // 取消按钮
+        $btnCancel.click(function (e) {
+            e.preventDefault();
+            $widthInput.val(380);
+            $heightInput.val(215);
+            $('#filename').remove();
+            editor.$curFileName = null;
+            editor.$resultText = null;
+            menu.dropPanel.hide();
+            E.$width = 380;
+            E.$height = 215;
+            $('#uploadIcon').css('display', 'block');
+        });
+        // 确定
+        $btnSubmit.click(function (e) {
+            e.preventDefault();
+            editor.$curFileName = null;
+            $('#filename').remove();
+            $('#uploadIcon').css('display', 'block');
+            if (!editor.$resultText) {
+                // 无上传内容
+                Vue.$message({type: 'warning', message: '您没有上传任何视频!'});
+                $widthInput.val(380);
+                $heightInput.val(215);
+                menu.dropPanel.hide();
+                return;
+            }
+            // 将结果插入编辑器
+            insertVideo(editor.$resultText, editor.$domEvent)
+            editor.$resultText = null;
+            $widthInput.val(380);
+            $heightInput.val(215);
+        });
+        // -------- 插入视频的方法 --------
+        function insertVideo(src, event) {
+            var width = E.$width || 380;
+            var height = E.$height || 215;
+            var video = '<video src="'+ src +'" controls="controls" style="width: '+ width +'px; height: '+ height +'px">your browser does not support the video tag</video>';
+            editor.command(event, 'insertHtml', video);
+        }
+        // 创建panel
+        menu.dropPanel = new E.DropPanel(editor, menu, {
+            $content: $content,
+            width: 400
+        });
+        // 增加到editor对象中
+        editor.menus[menuId] = menu;
+
+        // 监听设置的宽高的变化
+        $widthInput.change(function(e) {
+            E.$width = e.target.value;
+        });
+        $heightInput.change(function(e) {
+            E.$height = e.target.value;
+        });
+
+        // 判断用户是否配置了上传视频
+        editor.ready(function () {
+            var config = editor.config;
+            var uploadVideoUrl = config.uploadVideoUrl;
+            var customUpload = config.customUpload;
+            var linkVideo = config.hideLinkVideo;
+            var $uploadVideoPanel;
+
+            if (uploadVideoUrl || customUpload) {
+                // 第一，暴露出 $uploadContent 以便用户自定义 ！！！重要
+                editor.$uploadContentVideo = $uploadContentVideo;
+
+                // 第二，绑定tab切换事件
+                // tabToggle();
+
+                if (linkVideo) {
+                    // 隐藏网络视频
+                    hideLinkVideo();
+                }
+            }
+            // } else {
+            //     // 未配置上传视频功能
+            //     hideUploadVideo();
+            // }
+
+            // 点击 $uploadContent 立即隐藏 dropPanel
+            // 为了兼容IE8、9的上传，因为IE8、9使用 modal 上传
+            // 这里使用异步，为了不妨碍高级浏览器通过点击 $uploadContent 选择文件
+            // function hidePanel() {
+            //     menu.dropPanel.hide();
+            // }
+            // $uploadContentVideo.click(function () {
+            //     setTimeout(hidePanel);
+            // });
+        });
+    });
+
+    // 上传视频插件
+    if (!window.FileReader || !window.FormData) {
+        // 如果不支持html5的文档操作，直接返回
+        return;
+    }
+
+    // 构造函数
+    var UploadVideoFile = function (opt) {
+        this.editor = opt.editor;
+        this.uploadUrl = opt.uploadUrl;
+        this.timeout = opt.timeout;
+        this.fileAccept = opt.fileAccept;
+        this.multiple = true;
+    };
+    UploadVideoFile.fn = UploadVideoFile.prototype;
+    // clear
+    UploadVideoFile.fn.clear = function () {
+        this.$input.val('');
+        E.log('input value 已清空');
+    };
+    // 渲染
+    UploadVideoFile.fn.render = function () {
+        var self = this;
+        if (self._hasRender) {
+            // 不要重复渲染
+            return;
+        }
+
+        E.log('渲染dom');
+
+        var fileAccept = self.fileAccept;
+        var acceptTpl = fileAccept ? 'accept="' + fileAccept + '"' : '';
+        var multiple = self.multiple;
+        var multipleTpl = multiple ? 'multiple="multiple"' : '';
+        var $input = $('<input type="file" ' + acceptTpl + ' ' + multipleTpl + '/>');
+        var $container = $('<div style="display:none;"></div>');
+
+        $container.append($input);
+        E.$body.append($container);
+
+        // onchange 事件
+        $input.on('change', function (e) {
+            self.selected(e, $input.get(0));
+        });
+
+        // 记录对象数据
+        self.$input = $input;
+
+        // 记录
+        self._hasRender = true;
+    };
+
+    // 选择
+    UploadVideoFile.fn.selectFiles = function () {
+        var self = this;
+        E.log('使用 html5 方式上传');
+
+        // 先渲染
+        self.render();
+
+        // 选择
+        E.log('选择文件');
+        self.$input.click();
+    };
+
+    // 选中文件之后
+    UploadVideoFile.fn.selected = function (e, input) {
+        var self = this;
+        var files = input.files || [];
+        if (files.length === 0) {
+            return;
+        }
+
+        E.log('选中 ' + files.length + ' 个文件');
+
+        // 遍历选中的文件，预览、上传
+        $.each(files, function (key, value) {
+            self.upload(value);
+        });
+    };
+
+    // 上传单个文件
+    UploadVideoFile.fn.upload = function (file) {
+        var self = this;
+        var filename = file.name || '';
+        var fileType = file.type || '';
+        var uploadVideoFns = self.editor.config.uploadVideoFns;
+        var UploadVideoFileName = self.editor.config.uploadVideoFileName || 'qtyfEditorH5File';
+        var onload = uploadVideoFns.onload;
+        var ontimeout = uploadVideoFns.ontimeout;
+        var onerror = uploadVideoFns.onerror;
+        var reader = new FileReader();
+
+        if (!onload || !ontimeout || !onerror) {
+            E.error('请为编辑器配置上传视频的 onload ontimeout onerror 回调事件');
+            return;
+        }
+
+
+        E.log('开始执行 ' + filename + ' 文件的上传');
+
+        // 清空 input 数据
+        function clearInput() {
+            self.clear();
+        }
+
+        // onload事件
+        reader.onload = function (e) {
+            E.log('已读取' + filename + '文件');
+            self.editor.$domEvent = e;
+            var base64 = e.target.result || this.result;
+            self.editor.xhrUploadVideo({
+                event: e,
+                filename: filename,
+                base64: base64,
+                fileType: fileType,
+                name: UploadVideoFileName,
+                loadfn: function (resultText, xhr) {
+                    var editor = this;
+                    editor.$curFileName = filename;
+                    clearInput();
+                    // 执行配置中的方法
+                    onload.call(editor, resultText, xhr);
+                },
+                errorfn: function (xhr) {
+                    clearInput();
+                    if (E.isOnWebsite) {
+                        alert('qtyfEditor官网暂时没有服务端，因此报错。实际项目中不会发生');
+                    }
+                    // 执行配置中的方法
+                    var editor = this;
+                    onerror.call(editor, xhr);
+                },
+                timeoutfn: function (xhr) {
+                    clearInput();
+                    if (E.isOnWebsite) {
+                        alert('qtyfEditor官网暂时没有服务端，因此超时。实际项目中不会发生');
+                    }
+                    // 执行配置中的方法
+                    var editor = this;
+                    ontimeout(editor, xhr);
+                }
+            });
+        };
+
+        // 开始取文件
+        reader.readAsDataURL(file);
+    };
+
+    // 暴露给 E
+    E.UploadVideoFile = UploadVideoFile;
+    E.plugin(function () {
+        // 当前的编辑实例和当前视频上绑定的事件,上传后返回的url
+        var editor = this;
+        // var $domEvent, $resultText, $curFileName;
+        // 超时时间
+        E.config.uploadTimeout = 60 * 60 * 1000;
+        editor.config.uploadTimeout = 60 * 60 * 1000;
+        // 用于存储上传回调事件
+        editor.config.uploadVideoFns = {};
+        editor.config.uploadVideoFns.ontimeout = (xhr) => {
+            E.error('上传超时');
+            throw xhr;
+        };
+        editor.config.uploadVideoFns.onerror = function (xhr) {
+            alert('上传错误');
+            throw xhr;
+        };
+        var config = editor.config;
+        var uploadVideoUrl = config.uploadVideoUrl;
+        var uploadTimeout = config.uploadTimeout;
+        var event;
+        var fns = config.uploadVideoFns;
+        var onload = fns.onload;
+        var ontimeout = fns.ontimeout;
+        var onerror = fns.onerror;
+
+        if (!uploadVideoUrl) {
+            return;
+        }
+
+        // 获取editor的上传dom
+        var $uploadContentVideo = editor.$uploadContentVideo;
+        if (!$uploadContentVideo) {
+            return;
+        }
+
+        // -------- 定义load函数 --------
+        fns.onload = function (resultText, xhr) {
+            E.log('上传结束，返回结果为 ' + resultText);
+            if (resultText.indexOf('error') !== -1 || resultText.indexOf('Error') !== -1) {
+                // 提示错误
+                // E.warn('上传失败：' + resultText.split('|')[1]);
+                editor.$curFileName = null;
+                Vue.$message({type: 'error', message: '上传失败!'});
+            } else {
+                E.log('上传成功，即将插入编辑区域，结果为：' + resultText);
+                editor.$resultText = resultText;
+                $('#uploadIcon').css('display', 'none');
+                $('#container').append(`<p id="filename">&nbsp;&nbsp;${editor.$curFileName}</p>`);
+                Vue.$message({type: 'success', message: '上传完成!'});
+            }
+
+        };
+        // -------- 将以base64的视频url数据转换为Blob --------
+        function convertBase64UrlToBlob(urlData, filetype){
+            //去掉url的头，并转换为byte
+            var bytes = window.atob(urlData.split(',')[1]);
+            //处理异常,将ascii码小于0的转换为大于0
+            var ab = new ArrayBuffer(bytes.length);
+            var ia = new Uint8Array(ab);
+            var i;
+            for (i = 0; i < bytes.length; i++) {
+                ia[i] = bytes.charCodeAt(i);
+            }
+            return new Blob([ab], {type : filetype});
+        }
+
+        // -------- onprogress 事件 --------
+        function updateProgress(e) {
+            if (e.lengthComputable) {
+                var percentComplete = e.loaded / e.total;
+                editor.showUploadProgress(percentComplete * 100);
+            }
+        }
+        // -------- xhr 上传视频 --------
+        editor.xhrUploadVideo = function (opt) {
+            // opt 数据
+            var event = opt.event;
+            var fileName = opt.filename || '';
+            var base64 = opt.base64;
+            var fileType = opt.fileType || 'video/mp4'; // 无扩展名则默认使用 png
+            var name = opt.name || 'qtyfEditor_upload_file';
+            var loadfn = opt.loadfn || onload;
+            var errorfn = opt.errorfn || onerror;
+            var timeoutfn = opt.timeoutfn || ontimeout;
+
+            // 上传参数（如 token）
+            var params = editor.config.uploadParams || {};
+
+            // headers
+            var headers = editor.config.uploadHeaders || {};
+
+            // 获取文件扩展名
+            var fileExt = 'mp4';  // 默认为 png
+            if (fileName.indexOf('.') > 0) {
+                // 原来的文件名有扩展名
+                fileExt = fileName.slice(fileName.lastIndexOf('.') - fileName.length + 1);
+            } else if (fileType.indexOf('/') > 0 && fileType.split('/')[1]) {
+                // 文件名没有扩展名，通过类型获取，如从 'video/mp4' 取 'mp4'
+                fileExt = fileType.split('/')[1];
+            }
+
+            // ------------ begin 预览模拟上传 ------------
+            if (E.isOnWebsite) {
+                E.log('预览模拟上传');
+                insertVideo(base64, event);
+                return;
+            }
+            // ------------ end 预览模拟上传 ------------
+
+            // 变量声明
+            var xhr = new XMLHttpRequest();
+            var timeoutId;
+            var src;
+            var formData = new FormData();
+
+            // 超时处理
+            function timeoutCallback() {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+                if (xhr && xhr.abort) {
+                    xhr.abort();
+                }
+
+                // 超时了就阻止默认行为
+                event.preventDefault();
+
+                // 执行回调函数，提示什么内容，都应该在回调函数中定义
+                timeoutfn && timeoutfn.call(editor, xhr);
+
+                // 隐藏进度条
+                editor.hideUploadProgress();
+            }
+
+            xhr.onload = function () {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+
+                // 执行load函数，任何操作，都应该在load函数中定义
+                loadfn && loadfn.call(editor, xhr.responseText, xhr);
+
+                // 隐藏进度条
+                // editor.hideUploadProgress();
+            };
+            xhr.onerror = function () {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+
+                // 超时了就阻止默认行为
+                event.preventDefault();
+
+                // 执行error函数，错误提示，应该在error函数中定义
+                errorfn && errorfn.call(editor, xhr);
+
+                // 隐藏进度条
+                editor.hideUploadProgress();
+            };
+            // xhr.onprogress = updateProgress;
+            xhr.upload.onprogress = updateProgress;
+
+            // 填充数据
+            formData.append(name, convertBase64UrlToBlob(base64, fileType), E.random() + '.' + fileExt);
+
+            // 添加参数
+            $.each(params, function (key, value) {
+                formData.append(key, value);
+            });
+
+            // 开始上传
+            xhr.open('POST', uploadVideoUrl, true);
+            // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");  // 将参数解析成传统form的方式上传
+
+            // 修改自定义配置的headers
+            $.each(headers, function (key, value) {
+                xhr.setRequestHeader(key, value);
+            });
+
+            // 跨域上传时，传cookie
+            xhr.withCredentials = editor.config.withCredentials || true;
+
+            // 发送数据
+            xhr.send(formData);
+            timeoutId = setTimeout(timeoutCallback, uploadTimeout);
+
+            E.log('开始上传...并开始超时计算');
+        };
+
+        // 自定义UI，并添加到上传dom节点上
+        var $uploadIcon = $('<div id="uploadIcon"><div class="upload-icon-container"><i class="qtyfeditor-menu-img-upload"></i></div></div>');
+        $uploadContentVideo.append($uploadIcon);
+        // ---------- 构建上传对象 ----------
+        var upfile = new E.UploadVideoFile({
+            editor: editor,
+            uploadUrl: uploadVideoUrl,
+            timeout: uploadTimeout,
+            fileAccept: 'video/mp4'    // 只允许选择视频 
+        });
+
+        // 选择本地文件，上传
+        $uploadIcon.click(function (e) {
+            event = e;
+            upfile.selectFiles();
+        });
+    });
+});
+// 重写图片上传插件
+_e(function (E, $) {
+    // 用 createMenu 方法创建菜单
+    E.createMenu(function (check) {
+        var editor = this;
+        editor.$resultText = editor.$resultText || [];
+        // 定义菜单id，不要和其他菜单id重复。编辑器自带的所有菜单id
+        var menuId = 'imgs';
+
+        // check将检查菜单配置是否有该菜单id，如果没有，则忽略下面的代码。
+        if (!check(menuId)) {
+            return;
+        }
+        var lang = editor.config.lang;
+        // 创建 menu 对象
+        var menu = new E.Menu({
+            editor: editor,  // 编辑器对象
+            id: menuId,  // 菜单id
+            title: '图片', // 菜单标题
+
+            // 正常状态和选中状态下的dom对象，样式需要自定义
+            $domNormal: $('<a href="#" tabindex="-1"><i class="qtyfeditor-menu-img-picture"></i></a>'),
+            $domSelected: $('<a href="#" tabindex="-1" class="selected"><i class="qtyfeditor-menu-img-picture"></i></a>')
+        });
+
+        // 点击图片菜单将触发该事件
+        menu.clickEvent = function (e) {
+            menu.dropPanel.show();
+            Object.keys(editor.menus).filter(e => e !== 'imgs').map(key => editor.menus[key].dropPanel && editor.menus[key].dropPanel.hide());
+        };
+        //  点击图标异步加载表情并隐藏图片'emotion'
+        editor.menus['emotion'].clickEvent = function(e) {
+            menu.dropPanel.hide();
+            let emotion = editor.menus['emotion'];
+            let dropPanel = emotion.dropPanel;
+
+            // -------------隐藏-------------
+            if (dropPanel.isShowing) {
+                dropPanel.hide();
+                return;
+            }
+
+            // -------------显示-------------
+            dropPanel.show();
+
+            // 异步加载图片
+            if (emotion.imgLoaded) {
+                return;
+            }
+            $('.emotion-content-container').find('img').each(function () {
+                var $img = $(this);
+                var _src = $img.attr('_src');
+                $img.on('error', function () {
+                    E.error('加载不出表情图片 ' + _src);
+                });
+                $img.attr('src', _src);
+                $img.removeAttr('_src');
+            });
+            emotion.imgLoaded = true;
+        }
+        // 图片 点击其他地方，不隐藏 dropPanel
+        E.DropPanel.fn.initHideEvent = function () {
+            var self = this;
+
+            // 获取 panel elem
+            var thisPanle = self.$panel.get(0);
+
+            E.$body.on('click', function (e) {
+                if (!self.isShowing) {
+                    return;
+                }
+                var trigger = e.target;
+
+                // 获取菜单elem
+                var menu = self.menu;
+                var menuDom;
+                if (menu.selected) {
+                    menuDom = menu.$domSelected.get(0);
+                } else {
+                    menuDom = menu.$domNormal.get(0);
+                }
+
+                if (menuDom === trigger || $.contains(menuDom, trigger)) {
+                    // 说明由本菜单点击触发的
+                    return;
+                }
+
+                if (thisPanle === trigger || $.contains(thisPanle, trigger)) {
+                    // 说明由本panel点击触发的
+                    return;
+                }
+
+                // 其他情况，不隐藏 panel
+                // self.hide();
+            });
+            // 滚动放缩页面都不隐藏panel
+            E.$window.scroll(function (e) {
+
+            });
+
+            E.$window.on('resize', function () {
+
+            });
+        };
+        // 创建 panel 内容
+        var $content = $('<div></div>');
+
+        // 上传图片 content
+        var $contentContainer = $('<div id="container1" class="content-container"></div>');
+        var $uploadContentImage = $('<div class="content"><h1 style="margin-bottom: 20px;">上传图片</h1></div>');
+        $contentContainer.append($uploadContentImage);
+
+        var $btnContainer = $('<div></div>');
+        var $btnSubmit = $('<button class="right">' + '插入图片' + '</button>');
+        var $btnCancel = $('<button class="right gray">' + '取消' + '</button>');
+        $btnContainer.append($btnSubmit).append($btnCancel);
+        $content.append($contentContainer).append($btnContainer);
+
+        // 取消按钮
+        $btnCancel.click(function (e) {
+            e.preventDefault();
+            $('.imageBox').remove();
+            editor.$curFileName = null;
+            editor.$resultText = [];
+            menu.dropPanel.hide();
+        });
+        // 确定
+        $btnSubmit.click(function (e) {
+            e.preventDefault();
+            editor.$curFileName = null;
+            if (!(editor.$resultText && editor.$resultText.length)) {
+                // 无上传内容
+                Vue.$message({type: 'warning', message: '您没有上传任何图片!'});
+                menu.dropPanel.hide();
+                return;
+            }
+            var $resultImgSrc = [];
+            Array.from($('#uploadImgIcon').prevAll('.imageBox')).forEach((item, i) => {
+                if ($(item).find('input:checkbox').is(':checked')) {
+                    var src = $(item).find('img').attr('src');
+                    $resultImgSrc.push(src);
+                }
+            });
+            if (!$resultImgSrc.length) {
+                Vue.$message({type: 'warning', message: '您没有勾选任何图片, 请勾选图片后再插入图片!'});
+                return;
+            }
+            if (editor.$resultText) {
+                editor.$resultText = editor.$resultText.filter(src => $resultImgSrc.includes(src));
+            }
+            // 将结果插入编辑器
+            insertImage(editor.$resultText || [], editor.$domEvent)
+            $resultImgSrc = [];
+            editor.$resultText = [];
+            $('.imageBox').remove();
+
+        });
+        // -------- 插入图片的方法 --------
+        function insertImage(src, event) {
+            src.map(s => {
+                var img = document.createElement('img');
+
+                var html = '<img src="' + s + '" style="max-width:100%;"/>';
+                editor.command(event, 'insertHtml', html);
+                img.onload = function () {
+                    E.log('已插入图片，地址 ' + s);
+                    img = null;
+                };
+                img.onerror = function () {
+                    E.error('使用返回的结果获取图片，发生错误。请确认以下结果是否正确：' + s);
+                    img = null;
+                };
+                img.src = s;
+            })
+        }
+        // 创建panel
+        menu.dropPanel = new E.DropPanel(editor, menu, {
+            $content: $content,
+            width: 400
+        });
+        // 增加到editor对象中
+        editor.menus[menuId] = menu;
+
+        // 判断用户是否配置了上传图片
+        editor.ready(function () {
+            var config = editor.config;
+            var uploadImageUrl = config.uploadImageUrl;
+            var customUpload = config.customUpload;
+            var linkImage = config.hideLinkImage;
+            var $uploadImagePanel;
+
+            if (uploadImageUrl || customUpload) {
+                // 第一，暴露出 $uploadContent 以便用户自定义 ！！！重要
+                editor.$uploadContentImage = $uploadContentImage;
+
+                // 第二，绑定tab切换事件
+                // tabToggle();
+
+                if (linkImage) {
+                    // 隐藏网络图片
+                    hideLinkImage();
+                }
+            }
+            // } else {
+            //     // 未配置上传图片功能
+            //     hideUploadImage();
+            // }
+
+            // 点击 $uploadContent 立即隐藏 dropPanel
+            // 为了兼容IE8、9的上传，因为IE8、9使用 modal 上传
+            // 这里使用异步，为了不妨碍高级浏览器通过点击 $uploadContent 选择文件
+            // function hidePanel() {
+            //     menu.dropPanel.hide();
+            // }
+            // $uploadContentImage.click(function () {
+            //     setTimeout(hidePanel);
+            // });
+        });
+    });
+
+    // 上传图片插件
+    if (!window.FileReader || !window.FormData) {
+        // 如果不支持html5的文档操作，直接返回
+        return;
+    }
+
+    // 构造函数
+    var UploadImageFile = function (opt) {
+        this.editor = opt.editor;
+        this.uploadUrl = opt.uploadUrl;
+        this.timeout = opt.timeout;
+        this.fileAccept = opt.fileAccept;
+        this.multiple = true;
+    };
+    UploadImageFile.fn = UploadImageFile.prototype;
+    // clear
+    UploadImageFile.fn.clear = function () {
+        this.$input.val('');
+        E.log('input value 已清空');
+    };
+    // 渲染
+    UploadImageFile.fn.render = function () {
+        var self = this;
+        if (self._hasRender) {
+            // 不要重复渲染
+            return;
+        }
+
+        E.log('渲染dom');
+
+        var fileAccept = self.fileAccept;
+        var acceptTpl = fileAccept ? 'accept="' + fileAccept + '"' : '';
+        var multiple = self.multiple;
+        var multipleTpl = multiple ? 'multiple="multiple"' : '';
+        var $input = $('<input type="file" ' + acceptTpl + ' ' + multipleTpl + '/>');
+        var $container = $('<div style="display:none;"></div>');
+
+        $container.append($input);
+        E.$body.append($container);
+
+        // onchange 事件
+        $input.on('change', function (e) {
+            self.selected(e, $input.get(0));
+        });
+
+        // 记录对象数据
+        self.$input = $input;
+
+        // 记录
+        self._hasRender = true;
+    };
+
+    // 选择
+    UploadImageFile.fn.selectFiles = function () {
+        var self = this;
+        E.log('使用 html5 方式上传');
+
+        // 先渲染
+        self.render();
+
+        // 选择
+        E.log('选择文件');
+        self.$input.click();
+    };
+
+    // 选中文件之后
+    UploadImageFile.fn.selected = function (e, input) {
+        var self = this;
+        var files = input.files || [];
+        if (files.length === 0) {
+            return;
+        }
+
+        E.log('选中 ' + files.length + ' 个文件');
+
+        // 遍历选中的文件，预览、上传
+        $.each(files, function (key, value) {
+            self.upload(value);
+        });
+    };
+
+    // 上传单个文件
+    UploadImageFile.fn.upload = function (file) {
+        var self = this;
+        var filename = file.name || '';
+        var fileType = file.type || '';
+        var uploadImageFns = self.editor.config.uploadImageFns;
+        var UploadImageFileName = self.editor.config.uploadImageFileName || 'qtyfEditorH5File';
+        var onload = uploadImageFns.onload;
+        var ontimeout = uploadImageFns.ontimeout;
+        var onerror = uploadImageFns.onerror;
+        var reader = new FileReader();
+
+        if (!onload || !ontimeout || !onerror) {
+            E.error('请为编辑器配置上传图片的 onload ontimeout onerror 回调事件');
+            return;
+        }
+
+
+        E.log('开始执行 ' + filename + ' 文件的上传');
+
+        // 清空 input 数据
+        function clearInput() {
+            self.clear();
+        }
+
+        // onload事件
+        reader.onload = function (e) {
+            E.log('已读取' + filename + '文件');
+            self.editor.$domEvent = e;
+            var base64 = e.target.result || this.result;
+            self.editor.xhrUploadImage({
+                event: e,
+                filename: filename,
+                base64: base64,
+                fileType: fileType,
+                name: UploadImageFileName,
+                loadfn: function (resultText, xhr) {
+                    var editor = this;
+                    editor.$curFileName = filename;
+                    clearInput();
+                    // 执行配置中的方法
+                    onload.call(editor, resultText, xhr);
+                },
+                errorfn: function (xhr) {
+                    clearInput();
+                    if (E.isOnWebsite) {
+                        alert('qtyfEditor官网暂时没有服务端，因此报错。实际项目中不会发生');
+                    }
+                    // 执行配置中的方法
+                    var editor = this;
+                    onerror.call(editor, xhr);
+                },
+                timeoutfn: function (xhr) {
+                    clearInput();
+                    if (E.isOnWebsite) {
+                        alert('qtyfEditor官网暂时没有服务端，因此超时。实际项目中不会发生');
+                    }
+                    // 执行配置中的方法
+                    var editor = this;
+                    ontimeout(editor, xhr);
+                }
+            });
+        };
+
+        // 开始取文件
+        reader.readAsDataURL(file);
+    };
+
+    // 暴露给 E
+    E.UploadImageFile = UploadImageFile;
+    
+    E.plugin(function () {
+        // 当前的编辑实例和当前图片上绑定的事件,上传后返回的url
+        var editor = this;
+        editor.$resultText = editor.$resultText || [];
+        // 超时时间
+        E.config.uploadTimeout = 60 * 60 * 1000;
+        editor.config.uploadTimeout = 60 * 60 * 1000;
+        // 用于存储上传回调事件
+        editor.config.uploadImageFns = {};
+        editor.config.uploadImageFns.ontimeout = (xhr) => {
+            E.error('上传超时');
+            throw xhr;
+        };
+        editor.config.uploadImageFns.onerror = function (xhr) {
+            alert('上传错误');
+            throw xhr;
+        };
+        var config = editor.config;
+        var uploadImageUrl = config.uploadImageUrl;
+        var uploadTimeout = config.uploadTimeout;
+        var event;
+        var fns = config.uploadImageFns;
+        var onload = fns.onload;
+        var ontimeout = fns.ontimeout;
+        var onerror = fns.onerror;
+
+        if (!uploadImageUrl) {
+            return;
+        }
+
+        // 获取editor的上传dom
+        var $uploadContentImage = editor.$uploadContentImage;
+        if (!$uploadContentImage) {
+            return;
+        }
+
+        // -------- 定义load函数 --------
+        fns.onload = function (resultText, xhr) {
+            E.log('上传结束，返回结果为 ' + resultText);
+            if (resultText.indexOf('error') !== -1 || resultText.indexOf('Error') !== -1) {
+                // 提示错误
+                // E.warn('上传失败：' + resultText.split('|')[1]);
+                editor.$curFileName = null;
+                Vue.$message({type: 'error', message: '上传失败!'});
+            } else {
+                E.log('上传成功，即将插入编辑区域，结果为：' + resultText);
+                if (!editor.$resultText) {
+                    editor.$resultText = [];
+                }
+                editor.$resultText.push(resultText);
+                $('#uploadImgIcon').before(`
+                    <div id="drag-wrap${editor.$resultText.length}" class="imageBox" style="display: inline-block; width: 100px; margin: 5px;">
+                        <img id="img${editor.$resultText.length}" src="${resultText}" title="${editor.$curFileName.slice(0, editor.$curFileName.lastIndexOf('.'))}"  class="filename img-item" style="width: 100px; height: 100px;" /><br/>
+                        <input type="checkbox" checked="checked" style="position: relative; bottom: 104px; left: 88px;"/>
+                        <span style="display: inline-block; width: 100%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ">${editor.$curFileName.slice(0, editor.$curFileName.lastIndexOf('.'))}</span>
+                    </div>`
+                );
+                Vue.$message({type: 'success', message: '上传完成!'});
+
+                // 图片拖拽功能
+                const dragCon = document.getElementById('drag-wrap'+editor.$resultText.length);
+                dragCon.addEventListener('dragstart', startDrag, false);
+                /**
+                *  这里一定要阻止dragover的默认行为，不然触发不了drop
+                */
+                dragCon.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                }, false);
+                dragCon.addEventListener('drop', exchangeElement, false);
+
+                function startDrag(e) {
+                    e.dataTransfer.setData('Text', e.target.id + ';' + e.target.parentElement.id);
+                }
+
+                function exchangeElement(e) {
+                    e.preventDefault();
+                    const el = e.target;
+                    let PE, //要插入位置的父元素
+                        CE; //需要交换的元素
+                    if (el.tagName.toLowerCase() !== 'div') {
+                        PE = el.parentElement;
+                        CE = el;
+                    } else {
+                        PE = el;
+                        CE = el.querySelector('img');
+                    }
+                    /**
+                     * 判断不在控制范围内
+                     */
+                    if (!PE.classList.contains('imageBox')) {
+                        return;
+                    }
+
+                    const data = e.dataTransfer.getData('Text').split(';');
+                    //交换元素
+                    document.getElementById(data[1]).insertBefore(CE, document.getElementById(data[1]).getElementsByTagName('br')[0]);
+                    PE.insertBefore(document.getElementById(data[0]), PE.getElementsByTagName('br')[0]);
+                    // 交换span文本
+                    let Text1 = PE.lastElementChild.textContent;
+                    let Text2 = document.getElementById(data[1]).lastElementChild.textContent;
+                    let node1 = PE.lastElementChild;
+                    let node2 = document.getElementById(data[1]).lastElementChild;
+                    node1.textContent = Text2;
+                    node2.textContent = Text1;
+
+                    // 保存在$resultText里面的img地址交换
+                    let src1 = PE.firstElementChild.src;
+                    let src2 = document.getElementById(data[1]).firstElementChild.src;
+                    let index1 = editor.$resultText.indexOf(src1);
+                    let index2 = editor.$resultText.indexOf(src2);
+                    [editor.$resultText[index1], editor.$resultText[index2]] = [editor.$resultText[index2], editor.$resultText[index1]];
+                }
+            }
+
+        };
+        // -------- 将以base64的图片url数据转换为Blob --------
+        function convertBase64UrlToBlob(urlData, filetype){
+            //去掉url的头，并转换为byte
+            var bytes = window.atob(urlData.split(',')[1]);
+            //处理异常,将ascii码小于0的转换为大于0
+            var ab = new ArrayBuffer(bytes.length);
+            var ia = new Uint8Array(ab);
+            var i;
+            for (i = 0; i < bytes.length; i++) {
+                ia[i] = bytes.charCodeAt(i);
+            }
+            return new Blob([ab], {type : filetype});
+        }
+
+        // -------- onprogress 事件 --------
+        function updateProgress(e) {
+            if (e.lengthComputable) {
+                var percentComplete = e.loaded / e.total;
+                editor.showUploadProgress(percentComplete * 100);
+            }
+        }
+        // -------- xhr 上传图片 --------
+        editor.xhrUploadImage = function (opt) {
+            // opt 数据
+            var event = opt.event;
+            var fileName = opt.filename || '';
+            var base64 = opt.base64;
+            var fileType = opt.fileType || 'image/png'; // 无扩展名则默认使用 png
+            var name = opt.name || 'qtyfEditor_upload_file';
+            var loadfn = opt.loadfn || onload;
+            var errorfn = opt.errorfn || onerror;
+            var timeoutfn = opt.timeoutfn || ontimeout;
+
+            // 上传参数（如 token）
+            var params = editor.config.uploadParams || {};
+
+            // headers
+            var headers = editor.config.uploadHeaders || {};
+
+            // 获取文件扩展名
+            var fileExt = 'png';  // 默认为 png
+            if (fileName.indexOf('.') > 0) {
+                // 原来的文件名有扩展名
+                fileExt = fileName.slice(fileName.lastIndexOf('.') - fileName.length + 1);
+            } else if (fileType.indexOf('/') > 0 && fileType.split('/')[1]) {
+                // 文件名没有扩展名，通过类型获取，如从 'image/png/jpg/jpeg' 取 'png/jpg/jpeg'
+                fileExt = fileType.split('/')[1];
+            }
+
+            // ------------ begin 预览模拟上传 ------------
+            if (E.isOnWebsite) {
+                E.log('预览模拟上传');
+                insertImage(base64, event);
+                return;
+            }
+            // ------------ end 预览模拟上传 ------------
+
+            // 变量声明
+            var xhr = new XMLHttpRequest();
+            var timeoutId;
+            var src;
+            var formData = new FormData();
+
+            // 超时处理
+            function timeoutCallback() {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+                if (xhr && xhr.abort) {
+                    xhr.abort();
+                }
+
+                // 超时了就阻止默认行为
+                event.preventDefault();
+
+                // 执行回调函数，提示什么内容，都应该在回调函数中定义
+                timeoutfn && timeoutfn.call(editor, xhr);
+
+                // 隐藏进度条
+                editor.hideUploadProgress();
+            }
+
+            xhr.onload = function () {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+
+                // 执行load函数，任何操作，都应该在load函数中定义
+                loadfn && loadfn.call(editor, xhr.responseText, xhr);
+
+                // 隐藏进度条
+                // editor.hideUploadProgress();
+            };
+            xhr.onerror = function () {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+
+                // 超时了就阻止默认行为
+                event.preventDefault();
+
+                // 执行error函数，错误提示，应该在error函数中定义
+                errorfn && errorfn.call(editor, xhr);
+
+                // 隐藏进度条
+                editor.hideUploadProgress();
+            };
+            // xhr.onprogress = updateProgress;
+            xhr.upload.onprogress = updateProgress;
+
+            // 填充数据
+            formData.append(name, convertBase64UrlToBlob(base64, fileType), E.random() + '.' + fileExt);
+
+            // 添加参数
+            $.each(params, function (key, value) {
+                formData.append(key, value);
+            });
+
+            // 开始上传
+            xhr.open('POST', uploadImageUrl, true);
+            // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");  // 将参数解析成传统form的方式上传
+
+            // 修改自定义配置的headers
+            $.each(headers, function (key, value) {
+                xhr.setRequestHeader(key, value);
+            });
+
+            // 跨域上传时，传cookie
+            xhr.withCredentials = editor.config.withCredentials || true;
+
+            // 发送数据
+            xhr.send(formData);
+            timeoutId = setTimeout(timeoutCallback, uploadTimeout);
+
+            E.log('开始上传...并开始超时计算');
+        };
+        // 自定义UI，并添加到上传dom节点上
+        var $uploadImgIcon = $('<div id="uploadImgIcon"><div class="upload-icon-container"><i class="qtyfeditor-menu-img-upload"></i></div></div>');
+        $uploadContentImage.append($uploadImgIcon);
+        // ---------- 构建上传对象 ----------
+        var upfile = new E.UploadImageFile({
+            editor: editor,
+            uploadUrl: uploadImageUrl,
+            timeout: uploadTimeout,
+            fileAccept: 'image/jpg,image/jpeg,image/png,image/gif,image/bmp'    // 只允许选择图片 
+        });
+
+        // 选择本地文件，上传
+        $uploadImgIcon.click(function (e) {
+            event = e;
+            upfile.selectFiles();
+        });
+    });
+});
 // 版权提示
 _e(function (E, $) {
     E.info('本页面富文本编辑器由 qtyfEditor 提供 http://qtyfeditor.github.io/ ');
 });
-    
+
     // 最终返回qtyfEditor构造函数
     return window.qtyfEditor;
 });
